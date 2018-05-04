@@ -29,6 +29,12 @@ void draw_graph_outline(uint8_t delimiter, oled_color_t color, oled_color_t colo
 	oled_clearScreen(color_bg);
 	oled_line(10, 15, 10, 57, color);
 	oled_line(10, 57, 90, 57, color);
+	// vertical arrow
+	oled_line(10, 11, 8, 14, color);
+	oled_line(10, 11, 12, 14, color);
+	// horizontal arrow
+	oled_line(94, 57, 91, 55, color);
+	oled_line(94, 57, 91, 59, color);
 	int slot = 40 / delimiter;
 	for (int i=0; i < delimiter; i++){
 		oled_line(8, 17+slot*i, 12, 17+slot*i, color);
