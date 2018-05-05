@@ -216,6 +216,21 @@ int write_to_eeprom(uint16_t *data, uint16_t offset){
 	return 0;
 }
 
+int read_from_eeprom(uint16_t *data, uint16_t offset){
+	int16_t len = 0;
+	for(int i=0; i<(BUFF_LEN - 1); i++){
+		uint8_t temp[2];
+		len = eeprom_read(temp, (uint16_t)(offset + i*2), (uint16_t)2);
+		if(len != 2)
+			return 1;
+		// first 8 bits
+		data[i] = (uint16_t)(temp[0] << 8);
+		// last 8 bits
+		data[i] = data[i] + (uint16_t)temp[1];
+	}
+	return 0;
+}
+
 
 int main (void) {
     uint8_t joy = 0;
@@ -349,7 +364,7 @@ int main (void) {
 				t = temp_read() / 10;
 				fill_buffer(t, data_temp);
 				result = write_to_eeprom(data_temp, (uint16_t)TEMP_ADD);
-				oled_putString(20, 35, "Temperature", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(15, 30, "Temperature", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
 				if(result == 1)
 					return 1;
 			}
@@ -357,7 +372,7 @@ int main (void) {
 				light = light_read();
 				fill_buffer(light, data_light);
 				result = write_to_eeprom(data_light, (uint16_t)LIGHT_ADD);
-				oled_putString(20, 35, "Light", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(33, 30, "Light", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
 				if(result == 1)
 					return 1;
 			}
@@ -368,15 +383,43 @@ int main (void) {
 				potenc = ADC_ChannelGetData(LPC_ADC,ADC_CHANNEL_0);
 				fill_buffer(potenc, data_poten);
 				result = write_to_eeprom(data_poten, (uint16_t)POTEN_ADD);
-				oled_putString(20, 35, "Potentiometer", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(10, 30, "Potentiometer", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
 				if(result == 1)
 					return 1;
 			}
 		}
 		else{
 			// prikazhi snimeno
-			oled_clearScreen(OLED_COLOR_WHITE);
-			oled_putString(1, 1, "Snimeno:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+			if(data_type == 0){
+				oled_clearScreen(OLED_COLOR_WHITE);
+				draw_graph_outline(3, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(1, 1, "Recorded temp:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				result = read_from_eeprom(data_temp, (uint16_t)TEMP_ADD);
+				if(result == 1)
+					return 1;
+
+				draw_data(25, 35, data_temp, BUFF_LEN);
+			}
+			else if(data_type == 1){
+				oled_clearScreen(OLED_COLOR_WHITE);
+				draw_graph_outline(5, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(1, 1, "Recorded light:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				result = read_from_eeprom(data_light, (uint16_t)LIGHT_ADD);
+				if(result == 1)
+					return 1;
+
+				draw_data(0, 500, data_light, BUFF_LEN);
+			}
+			else{
+				oled_clearScreen(OLED_COLOR_WHITE);
+				draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				oled_putString(1, 1, "Recorded poten:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				result = read_from_eeprom(data_poten, (uint16_t)POTEN_ADD);
+				if(result == 1)
+					return 1;
+				draw_data(99, 4100, data_poten, BUFF_LEN);
+
+			}
 
 		}
     	/* delay */

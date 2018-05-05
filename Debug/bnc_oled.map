@@ -173,9 +173,6 @@ Discarded input sections
  .text          0x00000000        0x0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .data          0x00000000        0x0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .bss           0x00000000        0x0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .text.I2CRead  0x00000000       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .text.eeprom_read
-                0x00000000       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .debug_macro   0x00000000      0x880 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .debug_macro   0x00000000       0x1c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .debug_macro   0x00000000       0x22 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
@@ -772,7 +769,7 @@ END GROUP
                 0x20084000                __top_RamAHB32 = 0x20084000
                 0x20084000                __top_RAM2 = 0x20084000
 
-.text           0x00000000     0x4460
+.text           0x00000000     0x472c
  FILL mask 0xff
                 0x00000000                __vectors_start__ = ABSOLUTE (.)
  *(.isr_vector)
@@ -781,10 +778,10 @@ END GROUP
                 0x000000cc                . = ALIGN (0x4)
                 0x000000cc                __section_table_start = .
                 0x000000cc                __data_section_table = .
-                0x000000cc        0x4 LONG 0x4468 LOADADDR (.data)
+                0x000000cc        0x4 LONG 0x4734 LOADADDR (.data)
                 0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000d4        0x4 LONG 0x64 SIZEOF (.data)
-                0x000000d8        0x4 LONG 0x4468 LOADADDR (.data_RAM2)
+                0x000000d8        0x4 LONG 0x4734 LOADADDR (.data_RAM2)
                 0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
                 0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x000000e4                __data_section_table_end = .
@@ -887,321 +884,328 @@ END GROUP
  .text.write_to_eeprom
                 0x000004c0       0x78 ./src/main.o
                 0x000004c0                write_to_eeprom
- .text.main     0x00000538      0x434 ./src/main.o
-                0x00000538                main
+ .text.read_from_eeprom
+                0x00000538       0x84 ./src/main.o
+                0x00000538                read_from_eeprom
+ .text.main     0x000005bc      0x568 ./src/main.o
+                0x000005bc                main
  .text.check_failed
-                0x0000096c        0xc ./src/main.o
-                0x0000096c                check_failed
+                0x00000b24        0xc ./src/main.o
+                0x00000b24                check_failed
  .text.draw_graph_outline
-                0x00000978       0xe8 ./src/oled_graphing.o
-                0x00000978                draw_graph_outline
+                0x00000b30       0xe8 ./src/oled_graphing.o
+                0x00000b30                draw_graph_outline
  .text.draw_data
-                0x00000a60      0x1bc ./src/oled_graphing.o
-                0x00000a60                draw_data
+                0x00000c18      0x1bc ./src/oled_graphing.o
+                0x00000c18                draw_data
  .text.SystemInit
-                0x00000c1c      0x140 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
-                0x00000c1c                SystemInit
+                0x00000dd4      0x140 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x00000dd4                SystemInit
+ .text.I2CRead  0x00000f14       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .text.I2CWrite
-                0x00000d5c       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x00000f64       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .text.eepromDelay
-                0x00000dac       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x00000fb4       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .text.eeprom_init
-                0x00000dd4        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
-                0x00000dd4                eeprom_init
+                0x00000fdc        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x00000fdc                eeprom_init
+ .text.eeprom_read
+                0x00000fe8       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x00000fe8                eeprom_read
  .text.eeprom_write
-                0x00000de0       0xf4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
-                0x00000de0                eeprom_write
+                0x0000106c       0xf4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x0000106c                eeprom_write
  .text.joystick_init
-                0x00000ed4       0x20 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
-                0x00000ed4                joystick_init
+                0x00001160       0x20 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+                0x00001160                joystick_init
  .text.joystick_read
-                0x00000ef4       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
-                0x00000ef4                joystick_read
+                0x00001180       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+                0x00001180                joystick_read
  .text.led7seg_init
-                0x00000f7c       0x1c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
-                0x00000f7c                led7seg_init
+                0x00001208       0x1c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+                0x00001208                led7seg_init
  .text.led7seg_setChar
-                0x00000f98       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
-                0x00000f98                led7seg_setChar
- .text.I2CRead  0x0000100c       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x00001224       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+                0x00001224                led7seg_setChar
+ .text.I2CRead  0x00001298       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
  .text.I2CWrite
-                0x0000105c       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x000012e8       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
  .text.readControlReg
-                0x000010ac       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x00001338       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
  .text.light_init
-                0x000010d8        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
-                0x000010d8                light_init
+                0x00001364        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x00001364                light_init
  .text.light_enable
-                0x000010e4       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
-                0x000010e4                light_enable
+                0x00001370       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x00001370                light_enable
  .text.light_read
-                0x00001120       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
-                0x00001120                light_read
+                0x000013ac       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x000013ac                light_read
  .text.light_setRange
-                0x00001194       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
-                0x00001194                light_setRange
+                0x00001420       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x00001420                light_setRange
  .text.writeCommand
-                0x00001224       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x000014b0       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
  .text.writeData
-                0x0000126c       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x000014f8       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
  .text.writeDataLen
-                0x000012b4       0x78 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001540       0x78 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
  .text.runInitSequence
-                0x0000132c       0xd4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .text.hLine    0x00001400       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .text.vLine    0x00001458       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x000015b8       0xd4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .text.hLine    0x0000168c       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .text.vLine    0x000016e4       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
  .text.oled_init
-                0x000014b0       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x000014b0                oled_init
+                0x0000173c       0x74 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x0000173c                oled_init
  .text.oled_putPixel
-                0x00001524      0x150 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x00001524                oled_putPixel
+                0x000017b0      0x150 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x000017b0                oled_putPixel
  .text.oled_line
-                0x00001674      0x1b8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x00001674                oled_line
+                0x00001900      0x1b8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001900                oled_line
  .text.oled_fillRect
-                0x0000182c       0xa0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x0000182c                oled_fillRect
+                0x00001ab8       0xa0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001ab8                oled_fillRect
  .text.oled_clearScreen
-                0x000018cc       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x000018cc                oled_clearScreen
+                0x00001b58       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001b58                oled_clearScreen
  .text.oled_putChar
-                0x00001930       0xd8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x00001930                oled_putChar
+                0x00001bbc       0xd8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001bbc                oled_putChar
  .text.oled_putString
-                0x00001a08       0x54 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
-                0x00001a08                oled_putString
+                0x00001c94       0x54 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00001c94                oled_putString
  .text.pca9532_init
-                0x00001a5c        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
-                0x00001a5c                pca9532_init
+                0x00001ce8        0xc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+                0x00001ce8                pca9532_init
  .text.rotary_init
-                0x00001a68       0x14 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
-                0x00001a68                rotary_init
+                0x00001cf4       0x14 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+                0x00001cf4                rotary_init
  .text.temp_init
-                0x00001a7c       0x24 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
-                0x00001a7c                temp_init
+                0x00001d08       0x24 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+                0x00001d08                temp_init
  .text.temp_read
-                0x00001aa0       0xf0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
-                0x00001aa0                temp_read
+                0x00001d2c       0xf0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+                0x00001d2c                temp_read
  .text.ADC_Init
-                0x00001b90       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001b90                ADC_Init
+                0x00001e1c       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00001e1c                ADC_Init
  .text.ADC_StartCmd
-                0x00001c20       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001c20                ADC_StartCmd
+                0x00001eac       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00001eac                ADC_StartCmd
  .text.ADC_IntConfig
-                0x00001ca0       0x9c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001ca0                ADC_IntConfig
+                0x00001f2c       0x9c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00001f2c                ADC_IntConfig
  .text.ADC_ChannelCmd
-                0x00001d3c       0x60 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001d3c                ADC_ChannelCmd
+                0x00001fc8       0x60 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00001fc8                ADC_ChannelCmd
  .text.ADC_ChannelGetData
-                0x00001d9c       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001d9c                ADC_ChannelGetData
+                0x00002028       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00002028                ADC_ChannelGetData
  .text.ADC_ChannelGetStatus
-                0x00001de8       0x7c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
-                0x00001de8                ADC_ChannelGetStatus
+                0x00002074       0x7c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x00002074                ADC_ChannelGetStatus
  .text.CLKPWR_SetPCLKDiv
-                0x00001e64       0x8c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
-                0x00001e64                CLKPWR_SetPCLKDiv
+                0x000020f0       0x8c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+                0x000020f0                CLKPWR_SetPCLKDiv
  .text.CLKPWR_GetPCLKSEL
-                0x00001ef0       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
-                0x00001ef0                CLKPWR_GetPCLKSEL
+                0x0000217c       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+                0x0000217c                CLKPWR_GetPCLKSEL
  .text.CLKPWR_GetPCLK
-                0x00001f38       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
-                0x00001f38                CLKPWR_GetPCLK
+                0x000021c4       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+                0x000021c4                CLKPWR_GetPCLK
  .text.CLKPWR_ConfigPPWR
-                0x00001f9c       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
-                0x00001f9c                CLKPWR_ConfigPPWR
+                0x00002228       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+                0x00002228                CLKPWR_ConfigPPWR
  .text.GPIO_GetPointer
-                0x00001ff4       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x00002280       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
  .text.GPIO_SetDir
-                0x00002064       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
-                0x00002064                GPIO_SetDir
+                0x000022f0       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x000022f0                GPIO_SetDir
  .text.GPIO_SetValue
-                0x000020b0       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
-                0x000020b0                GPIO_SetValue
+                0x0000233c       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x0000233c                GPIO_SetValue
  .text.GPIO_ClearValue
-                0x000020dc       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
-                0x000020dc                GPIO_ClearValue
+                0x00002368       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x00002368                GPIO_ClearValue
  .text.GPIO_ReadValue
-                0x00002108       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
-                0x00002108                GPIO_ReadValue
+                0x00002394       0x2c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x00002394                GPIO_ReadValue
  .text.NVIC_EnableIRQ
-                0x00002134       0x30 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000023c0       0x30 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.NVIC_DisableIRQ
-                0x00002164       0x34 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000023f0       0x34 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_getNum
-                0x00002198       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x00002424       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_Start
-                0x000021e0       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x0000246c       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_Stop
-                0x0000221c       0x30 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000024a8       0x30 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_SendByte
-                0x0000224c       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000024d8       0x4c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_GetByte
-                0x00002298       0x54 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x00002524       0x54 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_SetClock
-                0x000022ec       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x00002578       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .text.I2C_Init
-                0x00002390       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
-                0x00002390                I2C_Init
- .text.I2C_Cmd  0x00002434       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
-                0x00002434                I2C_Cmd
+                0x0000261c       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x0000261c                I2C_Init
+ .text.I2C_Cmd  0x000026c0       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000026c0                I2C_Cmd
  .text.I2C_IntCmd
-                0x000024a4       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
-                0x000024a4                I2C_IntCmd
+                0x00002730       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x00002730                I2C_IntCmd
  .text.I2C_MasterTransferData
-                0x0000252c      0x2cc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
-                0x0000252c                I2C_MasterTransferData
+                0x000027b8      0x2cc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000027b8                I2C_MasterTransferData
  .text.set_PinFunc
-                0x000027f8       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+                0x00002a84       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
  .text.set_ResistorMode
-                0x0000287c       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+                0x00002b08       0x84 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
  .text.set_OpenDrainMode
-                0x00002900       0x6c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+                0x00002b8c       0x6c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
  .text.PINSEL_ConfigPin
-                0x0000296c       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
-                0x0000296c                PINSEL_ConfigPin
+                0x00002bf8       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+                0x00002bf8                PINSEL_ConfigPin
  .text.setSSPclock
-                0x000029b4       0xc4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002c40       0xc4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
  .text.SSP_Init
-                0x00002a78       0x9c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002a78                SSP_Init
+                0x00002d04       0x9c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002d04                SSP_Init
  .text.SSP_GetDataSize
-                0x00002b14       0x40 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002b14                SSP_GetDataSize
+                0x00002da0       0x40 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002da0                SSP_GetDataSize
  .text.SSP_ConfigStructInit
-                0x00002b54       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002b54                SSP_ConfigStructInit
- .text.SSP_Cmd  0x00002b90       0x6c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002b90                SSP_Cmd
+                0x00002de0       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002de0                SSP_ConfigStructInit
+ .text.SSP_Cmd  0x00002e1c       0x6c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002e1c                SSP_Cmd
  .text.SSP_SendData
-                0x00002bfc       0x40 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002bfc                SSP_SendData
+                0x00002e88       0x40 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002e88                SSP_SendData
  .text.SSP_ReceiveData
-                0x00002c3c       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002c3c                SSP_ReceiveData
+                0x00002ec8       0x3c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002ec8                SSP_ReceiveData
  .text.SSP_ReadWrite
-                0x00002c78      0x350 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
-                0x00002c78                SSP_ReadWrite
+                0x00002f04      0x350 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x00002f04                SSP_ReadWrite
  .text.getPClock
-                0x00002fc8       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003254       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
  .text.converUSecToVal
-                0x00003020       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x000032ac       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
  .text.converPtrToTimeNum
-                0x00003078       0x5c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003304       0x5c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
  .text.TIM_GetIntStatus
-                0x000030d4       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x000030d4                TIM_GetIntStatus
+                0x00003360       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003360                TIM_GetIntStatus
  .text.TIM_ClearIntPending
-                0x0000316c       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x0000316c                TIM_ClearIntPending
+                0x000033f8       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x000033f8                TIM_ClearIntPending
  .text.TIM_Init
-                0x000031f4      0x184 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x000031f4                TIM_Init
- .text.TIM_Cmd  0x00003378       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x00003378                TIM_Cmd
+                0x00003480      0x184 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003480                TIM_Init
+ .text.TIM_Cmd  0x00003604       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003604                TIM_Cmd
  .text.TIM_ConfigMatch
-                0x000033e8      0x184 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x000033e8                TIM_ConfigMatch
+                0x00003674      0x184 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00003674                TIM_ConfigMatch
  .text.Timer0_Wait
-                0x0000356c       0x78 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x0000356c                Timer0_Wait
- .text          0x000035e4      0x21c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x000035e4                __aeabi_frsub
-                0x000035ec                __subsf3
-                0x000035ec                __aeabi_fsub
-                0x000035f0                __aeabi_fadd
-                0x000035f0                __addsf3
-                0x00003750                __aeabi_ui2f
-                0x00003750                __floatunsisf
-                0x00003758                __aeabi_i2f
-                0x00003758                __floatsisf
-                0x00003774                __aeabi_ul2f
-                0x00003774                __floatundisf
-                0x00003784                __aeabi_l2f
-                0x00003784                __floatdisf
- .text          0x00003800      0x2a0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x00003800                __mulsf3
-                0x00003800                __aeabi_fmul
-                0x00003968                __aeabi_fdiv
-                0x00003968                __divsf3
- .text          0x00003aa0       0xec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x00003aa0                __gesf2
-                0x00003aa0                __gtsf2
-                0x00003aa8                __lesf2
-                0x00003aa8                __ltsf2
-                0x00003ab0                __nesf2
-                0x00003ab0                __eqsf2
-                0x00003ab0                __cmpsf2
-                0x00003b10                __aeabi_cfrcmple
-                0x00003b18                __aeabi_cfcmpeq
-                0x00003b18                __aeabi_cfcmple
-                0x00003b28                __aeabi_fcmpeq
-                0x00003b3c                __aeabi_fcmplt
-                0x00003b50                __aeabi_fcmple
-                0x00003b64                __aeabi_fcmpge
-                0x00003b78                __aeabi_fcmpgt
- .text          0x00003b8c       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
-                0x00003b8c                __fixunssfsi
-                0x00003b8c                __aeabi_f2uiz
- .text          0x00003bcc       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
-                0x00003bcc                __aeabi_uldivmod
- .text          0x00003bfc      0x2ec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
-                0x00003bfc                __udivmoddi4
- .text          0x00003ee8        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
-                0x00003ee8                __aeabi_idiv0
-                0x00003ee8                __aeabi_ldiv0
- .text          0x00003eec       0xec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memcpy.o)
-                0x00003eec                memcpy
- .text.memset   0x00003fd8       0x9c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
-                0x00003fd8                memset
+                0x000037f8       0x78 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x000037f8                Timer0_Wait
+ .text          0x00003870      0x21c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x00003870                __aeabi_frsub
+                0x00003878                __subsf3
+                0x00003878                __aeabi_fsub
+                0x0000387c                __aeabi_fadd
+                0x0000387c                __addsf3
+                0x000039dc                __aeabi_ui2f
+                0x000039dc                __floatunsisf
+                0x000039e4                __aeabi_i2f
+                0x000039e4                __floatsisf
+                0x00003a00                __aeabi_ul2f
+                0x00003a00                __floatundisf
+                0x00003a10                __aeabi_l2f
+                0x00003a10                __floatdisf
+ .text          0x00003a8c      0x2a0 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x00003a8c                __mulsf3
+                0x00003a8c                __aeabi_fmul
+                0x00003bf4                __aeabi_fdiv
+                0x00003bf4                __divsf3
+ .text          0x00003d2c       0xec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x00003d2c                __gesf2
+                0x00003d2c                __gtsf2
+                0x00003d34                __lesf2
+                0x00003d34                __ltsf2
+                0x00003d3c                __nesf2
+                0x00003d3c                __eqsf2
+                0x00003d3c                __cmpsf2
+                0x00003d9c                __aeabi_cfrcmple
+                0x00003da4                __aeabi_cfcmpeq
+                0x00003da4                __aeabi_cfcmple
+                0x00003db4                __aeabi_fcmpeq
+                0x00003dc8                __aeabi_fcmplt
+                0x00003ddc                __aeabi_fcmple
+                0x00003df0                __aeabi_fcmpge
+                0x00003e04                __aeabi_fcmpgt
+ .text          0x00003e18       0x40 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x00003e18                __fixunssfsi
+                0x00003e18                __aeabi_f2uiz
+ .text          0x00003e58       0x30 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+                0x00003e58                __aeabi_uldivmod
+ .text          0x00003e88      0x2ec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x00003e88                __udivmoddi4
+ .text          0x00004174        0x4 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x00004174                __aeabi_idiv0
+                0x00004174                __aeabi_ldiv0
+ .text          0x00004178       0xec c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memcpy.o)
+                0x00004178                memcpy
+ .text.memset   0x00004264       0x9c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+                0x00004264                memset
  *(.rodata .rodata.* .constdata .constdata.*)
- .rodata        0x00004074       0x81 ./src/main.o
- *fill*         0x000040f5        0x3 ff
- .rodata        0x000040f8        0x8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .rodata        0x00004100      0x300 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
-                0x00004100                font5x7
- .rodata        0x00004400       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- *fill*         0x00004415        0x3 ff
- .rodata        0x00004418       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- *fill*         0x0000442d        0x3 ff
- .rodata        0x00004430       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- *fill*         0x00004445        0x3 ff
- .rodata        0x00004448       0x17 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
-                0x00004460                . = ALIGN (0x4)
- *fill*         0x0000445f        0x1 ff
+ .rodata        0x00004300       0xc1 ./src/main.o
+ *fill*         0x000043c1        0x3 ff
+ .rodata        0x000043c4        0x8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .rodata        0x000043cc      0x300 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+                0x000043cc                font5x7
+ .rodata        0x000046cc       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ *fill*         0x000046e1        0x3 ff
+ .rodata        0x000046e4       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ *fill*         0x000046f9        0x3 ff
+ .rodata        0x000046fc       0x15 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ *fill*         0x00004711        0x3 ff
+ .rodata        0x00004714       0x17 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x0000472c                . = ALIGN (0x4)
+ *fill*         0x0000472b        0x1 ff
 
-.glue_7         0x00004460        0x0
- .glue_7        0x00004460        0x0 linker stubs
+.glue_7         0x0000472c        0x0
+ .glue_7        0x0000472c        0x0 linker stubs
 
-.glue_7t        0x00004460        0x0
- .glue_7t       0x00004460        0x0 linker stubs
+.glue_7t        0x0000472c        0x0
+ .glue_7t       0x0000472c        0x0 linker stubs
 
-.vfp11_veneer   0x00004460        0x0
- .vfp11_veneer  0x00004460        0x0 linker stubs
+.vfp11_veneer   0x0000472c        0x0
+ .vfp11_veneer  0x0000472c        0x0 linker stubs
 
-.v4_bx          0x00004460        0x0
- .v4_bx         0x00004460        0x0 linker stubs
+.v4_bx          0x0000472c        0x0
+ .v4_bx         0x0000472c        0x0 linker stubs
 
-.iplt           0x00004460        0x0
- .iplt          0x00004460        0x0 ./src/cr_startup_lpc17.o
+.iplt           0x0000472c        0x0
+ .iplt          0x0000472c        0x0 ./src/cr_startup_lpc17.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00004460                __exidx_start = .
+                0x0000472c                __exidx_start = .
 
-.ARM.exidx      0x00004460        0x8
+.ARM.exidx      0x0000472c        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x00004460        0x8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
-                0x00004468                __exidx_end = .
-                0x00004468                _etext = .
+ .ARM.exidx     0x0000472c        0x8 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x00004734                __exidx_end = .
+                0x00004734                _etext = .
 
-.rel.dyn        0x00004468        0x0
- .rel.iplt      0x00004468        0x0 ./src/cr_startup_lpc17.o
+.rel.dyn        0x00004734        0x0
+ .rel.iplt      0x00004734        0x0 ./src/cr_startup_lpc17.o
 
-.data_RAM2      0x2007c000        0x0 load address 0x00004468
+.data_RAM2      0x2007c000        0x0 load address 0x00004734
  FILL mask 0xff
                 [!provide]                PROVIDE (__start_data_RAM2, .)
  *(.ramfunc.$RAM2)
@@ -1217,7 +1221,7 @@ END GROUP
                 0x10000000                . = ALIGN (0x4)
                 0x10000000                _end_uninit_RESERVED = .
 
-.data           0x10000000       0x64 load address 0x00004468
+.data           0x10000000       0x64 load address 0x00004734
  FILL mask 0xff
                 0x10000000                _data = .
  *(vtable)
@@ -1231,7 +1235,7 @@ END GROUP
                 0x10000064                . = ALIGN (0x4)
                 0x10000064                _edata = .
 
-.igot.plt       0x10000064        0x0 load address 0x000044cc
+.igot.plt       0x10000064        0x0 load address 0x00004798
  .igot.plt      0x10000064        0x0 ./src/cr_startup_lpc17.o
 
 .bss_RAM2       0x2007c000        0x0
@@ -1272,112 +1276,112 @@ END GROUP
                 [!provide]                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
 OUTPUT(bnc_oled.axf elf32-littlearm)
 
-.debug_info     0x00000000     0x6de3
+.debug_info     0x00000000     0x6eab
  .debug_info    0x00000000      0x1b6 ./src/cr_startup_lpc17.o
- .debug_info    0x000001b6      0xd2f ./src/main.o
- .debug_info    0x00000ee5      0x253 ./src/oled_graphing.o
- .debug_info    0x00001138      0x2e3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x0000141b      0x476 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .debug_info    0x00001891       0xfa C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
- .debug_info    0x0000198b      0x244 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
- .debug_info    0x00001bcf      0x6fb C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
- .debug_info    0x000022ca      0x90b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .debug_info    0x00002bd5      0x5d6 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
- .debug_info    0x000031ab       0xed C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
- .debug_info    0x00003298      0x13e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
- .debug_info    0x000033d6       0x61 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
- .debug_info    0x00003437      0x5da C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- .debug_info    0x00003a11      0x5a5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
- .debug_info    0x00003fb6      0xd22 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
- .debug_info    0x00004cd8      0xcf2 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- .debug_info    0x000059ca      0x44e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
- .debug_info    0x00005e18      0x711 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- .debug_info    0x00006529      0x8ba C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_info    0x000001b6      0xdf7 ./src/main.o
+ .debug_info    0x00000fad      0x253 ./src/oled_graphing.o
+ .debug_info    0x00001200      0x2e3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x000014e3      0x476 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_info    0x00001959       0xfa C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_info    0x00001a53      0x244 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_info    0x00001c97      0x6fb C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_info    0x00002392      0x90b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_info    0x00002c9d      0x5d6 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_info    0x00003273       0xed C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_info    0x00003360      0x13e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_info    0x0000349e       0x61 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+ .debug_info    0x000034ff      0x5da C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_info    0x00003ad9      0x5a5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_info    0x0000407e      0xd22 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_info    0x00004da0      0xcf2 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_info    0x00005a92      0x44e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_info    0x00005ee0      0x711 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_info    0x000065f1      0x8ba C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
-.debug_abbrev   0x00000000     0x1c50
+.debug_abbrev   0x00000000     0x1c5f
  .debug_abbrev  0x00000000       0xb9 ./src/cr_startup_lpc17.o
- .debug_abbrev  0x000000b9      0x2b8 ./src/main.o
- .debug_abbrev  0x00000371       0xe3 ./src/oled_graphing.o
- .debug_abbrev  0x00000454       0xe6 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x0000053a      0x16d C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .debug_abbrev  0x000006a7       0x95 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
- .debug_abbrev  0x0000073c      0x130 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
- .debug_abbrev  0x0000086c      0x1d2 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
- .debug_abbrev  0x00000a3e      0x1ed C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .debug_abbrev  0x00000c2b      0x1d7 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
- .debug_abbrev  0x00000e02       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
- .debug_abbrev  0x00000ea6       0xc7 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
- .debug_abbrev  0x00000f6d       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
- .debug_abbrev  0x00000fb5      0x165 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- .debug_abbrev  0x0000111a      0x1be C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
- .debug_abbrev  0x000012d8      0x204 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
- .debug_abbrev  0x000014dc      0x26e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- .debug_abbrev  0x0000174a      0x143 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
- .debug_abbrev  0x0000188d      0x1c9 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- .debug_abbrev  0x00001a56      0x1fa C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_abbrev  0x000000b9      0x2c7 ./src/main.o
+ .debug_abbrev  0x00000380       0xe3 ./src/oled_graphing.o
+ .debug_abbrev  0x00000463       0xe6 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00000549      0x16d C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_abbrev  0x000006b6       0x95 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_abbrev  0x0000074b      0x130 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_abbrev  0x0000087b      0x1d2 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_abbrev  0x00000a4d      0x1ed C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_abbrev  0x00000c3a      0x1d7 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_abbrev  0x00000e11       0xa4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_abbrev  0x00000eb5       0xc7 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_abbrev  0x00000f7c       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+ .debug_abbrev  0x00000fc4      0x165 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_abbrev  0x00001129      0x1be C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_abbrev  0x000012e7      0x204 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_abbrev  0x000014eb      0x26e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_abbrev  0x00001759      0x143 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_abbrev  0x0000189c      0x1c9 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_abbrev  0x00001a65      0x1fa C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
-.debug_aranges  0x00000000      0x828
+.debug_aranges  0x00000000      0x830
  .debug_aranges
                 0x00000000       0x70 ./src/cr_startup_lpc17.o
  .debug_aranges
-                0x00000070       0x80 ./src/main.o
+                0x00000070       0x88 ./src/main.o
  .debug_aranges
-                0x000000f0       0x28 ./src/oled_graphing.o
+                0x000000f8       0x28 ./src/oled_graphing.o
  .debug_aranges
-                0x00000118       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+                0x00000120       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
  .debug_aranges
-                0x00000140       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+                0x00000148       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
  .debug_aranges
-                0x00000188       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+                0x00000190       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
  .debug_aranges
-                0x000001b0       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+                0x000001b8       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
  .debug_aranges
-                0x000001d8       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+                0x000001e0       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
  .debug_aranges
-                0x00000270       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+                0x00000278       0x90 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
  .debug_aranges
-                0x00000300       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+                0x00000308       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
  .debug_aranges
-                0x00000380       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+                0x00000388       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
  .debug_aranges
-                0x000003a8       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+                0x000003b0       0x28 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
  .debug_aranges
-                0x000003d0       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+                0x000003d8       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
  .debug_aranges
-                0x000003e8       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+                0x000003f0       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
  .debug_aranges
-                0x00000468       0x60 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+                0x00000470       0x60 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
  .debug_aranges
-                0x000004c8       0xf8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+                0x000004d0       0xf8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
  .debug_aranges
-                0x000005c0       0xd0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+                0x000005c8       0xd0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
  .debug_aranges
-                0x00000690       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+                0x00000698       0x48 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
  .debug_aranges
-                0x000006d8       0xa8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+                0x000006e0       0xa8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
  .debug_aranges
-                0x00000780       0xa8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+                0x00000788       0xa8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
-.debug_ranges   0x00000000      0x6e0
+.debug_ranges   0x00000000      0x6e8
  .debug_ranges  0x00000000       0x60 ./src/cr_startup_lpc17.o
- .debug_ranges  0x00000060       0x70 ./src/main.o
- .debug_ranges  0x000000d0       0x18 ./src/oled_graphing.o
- .debug_ranges  0x000000e8       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_ranges  0x00000100       0x38 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .debug_ranges  0x00000138       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
- .debug_ranges  0x00000150       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
- .debug_ranges  0x00000168       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
- .debug_ranges  0x000001f0       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .debug_ranges  0x00000270       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
- .debug_ranges  0x000002e0       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
- .debug_ranges  0x000002f8       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
- .debug_ranges  0x00000310       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- .debug_ranges  0x00000380       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
- .debug_ranges  0x000003d0       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
- .debug_ranges  0x000004b8       0xc0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- .debug_ranges  0x00000578       0x38 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
- .debug_ranges  0x000005b0       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- .debug_ranges  0x00000648       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_ranges  0x00000060       0x78 ./src/main.o
+ .debug_ranges  0x000000d8       0x18 ./src/oled_graphing.o
+ .debug_ranges  0x000000f0       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_ranges  0x00000108       0x38 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_ranges  0x00000140       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_ranges  0x00000158       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_ranges  0x00000170       0x88 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_ranges  0x000001f8       0x80 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_ranges  0x00000278       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_ranges  0x000002e8       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_ranges  0x00000300       0x18 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_ranges  0x00000318       0x70 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_ranges  0x00000388       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_ranges  0x000003d8       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_ranges  0x000004c0       0xc0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_ranges  0x00000580       0x38 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_ranges  0x000005b8       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_ranges  0x00000650       0x98 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
 .debug_macro    0x00000000     0x6496
  .debug_macro   0x00000000       0x79 ./src/cr_startup_lpc17.o
@@ -1454,68 +1458,68 @@ OUTPUT(bnc_oled.axf elf32-littlearm)
  .debug_macro   0x0000631a       0x95 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
  .debug_macro   0x000063af       0xe7 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
-.debug_line     0x00000000     0x49fa
+.debug_line     0x00000000     0x4a45
  .debug_line    0x00000000      0x32a ./src/cr_startup_lpc17.o
- .debug_line    0x0000032a      0x5c4 ./src/main.o
- .debug_line    0x000008ee      0x42c ./src/oled_graphing.o
- .debug_line    0x00000d1a      0x205 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x00000f1f      0x31e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .debug_line    0x0000123d      0x26c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
- .debug_line    0x000014a9      0x27c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
- .debug_line    0x00001725      0x3b5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
- .debug_line    0x00001ada      0x587 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .debug_line    0x00002061      0x39c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
- .debug_line    0x000023fd      0x27e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
- .debug_line    0x0000267b      0x281 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
- .debug_line    0x000028fc       0x8f C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
- .debug_line    0x0000298b      0x407 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- .debug_line    0x00002d92      0x2ce C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
- .debug_line    0x00003060      0x4d9 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
- .debug_line    0x00003539      0x6f3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- .debug_line    0x00003c2c      0x26d C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
- .debug_line    0x00003e99      0x583 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- .debug_line    0x0000441c      0x5de C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_line    0x0000032a      0x60f ./src/main.o
+ .debug_line    0x00000939      0x42c ./src/oled_graphing.o
+ .debug_line    0x00000d65      0x205 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x00000f6a      0x31e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_line    0x00001288      0x26c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_line    0x000014f4      0x27c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_line    0x00001770      0x3b5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_line    0x00001b25      0x587 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_line    0x000020ac      0x39c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_line    0x00002448      0x27e C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_line    0x000026c6      0x281 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_line    0x00002947       0x8f C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+ .debug_line    0x000029d6      0x407 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_line    0x00002ddd      0x2ce C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_line    0x000030ab      0x4d9 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_line    0x00003584      0x6f3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_line    0x00003c77      0x26d C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_line    0x00003ee4      0x583 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_line    0x00004467      0x5de C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
 
-.debug_str      0x00000000    0x13682
+.debug_str      0x00000000    0x13693
  .debug_str     0x00000000     0x336e ./src/cr_startup_lpc17.o
                                0x34d4 (size before relaxing)
- .debug_str     0x0000336e     0x7a1f ./src/main.o
-                               0xae1c (size before relaxing)
- .debug_str     0x0000ad8d     0x29fb ./src/oled_graphing.o
+ .debug_str     0x0000336e     0x7a30 ./src/main.o
+                               0xae2d (size before relaxing)
+ .debug_str     0x0000ad9e     0x29fb ./src/oled_graphing.o
                                0xbace (size before relaxing)
- .debug_str     0x0000d788     0x1b26 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000d799     0x1b26 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
                                0x7ff7 (size before relaxing)
- .debug_str     0x0000f2ae      0x477 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_str     0x0000f2bf      0x477 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
                                0x8ad8 (size before relaxing)
- .debug_str     0x0000f725       0x3a C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_str     0x0000f736       0x3a C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
                                0x8054 (size before relaxing)
- .debug_str     0x0000f75f       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_str     0x0000f770       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
                                0x90e9 (size before relaxing)
- .debug_str     0x0000f847      0x414 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_str     0x0000f858      0x414 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
                                0x8be7 (size before relaxing)
- .debug_str     0x0000fc5b      0x2ee C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_str     0x0000fc6c      0x2ee C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
                                0x9c6a (size before relaxing)
- .debug_str     0x0000ff49      0x1a3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_str     0x0000ff5a      0x1a3 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
                                0x8aec (size before relaxing)
- .debug_str     0x000100ec       0x9b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_str     0x000100fd       0x9b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
                                0x806e (size before relaxing)
- .debug_str     0x00010187       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_str     0x00010198       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
                                0x80ae (size before relaxing)
- .debug_str     0x0001026f      0xe21 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
+ .debug_str     0x00010280      0xe21 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(font5x7.o)
                                0x32d4 (size before relaxing)
- .debug_str     0x00011090     0x159b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_str     0x000110a1     0x159b C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
                                0x9bbd (size before relaxing)
- .debug_str     0x0001262b       0xcb C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_str     0x0001263c       0xcb C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
                                0x91eb (size before relaxing)
- .debug_str     0x000126f6      0x424 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_str     0x00012707      0x424 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
                                0x8555 (size before relaxing)
- .debug_str     0x00012b1a      0x341 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_str     0x00012b2b      0x341 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
                                0xa523 (size before relaxing)
- .debug_str     0x00012e5b      0x202 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_str     0x00012e6c      0x202 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
                                0x847c (size before relaxing)
- .debug_str     0x0001305d      0x1c5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_str     0x0001306e      0x1c5 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
                                0xa3dc (size before relaxing)
- .debug_str     0x00013222      0x460 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_str     0x00013233      0x460 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
                                0xa1f5 (size before relaxing)
 
 .comment        0x00000000       0x6e
@@ -1602,26 +1606,26 @@ OUTPUT(bnc_oled.axf elf32-littlearm)
  .ARM.attributes
                 0x000004f2       0x2d c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
 
-.debug_frame    0x00000000     0x1e0c
+.debug_frame    0x00000000     0x1e30
  .debug_frame   0x00000000      0x120 ./src/cr_startup_lpc17.o
- .debug_frame   0x00000120      0x1e8 ./src/main.o
- .debug_frame   0x00000308       0x60 ./src/oled_graphing.o
- .debug_frame   0x00000368       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
- .debug_frame   0x000003cc       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
- .debug_frame   0x000004b4       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
- .debug_frame   0x00000504       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
- .debug_frame   0x00000554      0x24c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
- .debug_frame   0x000007a0      0x244 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
- .debug_frame   0x000009e4      0x1e8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
- .debug_frame   0x00000bcc       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
- .debug_frame   0x00000c1c       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
- .debug_frame   0x00000c74      0x1e8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
- .debug_frame   0x00000e5c      0x13c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
- .debug_frame   0x00000f98      0x428 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
- .debug_frame   0x000013c0      0x374 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
- .debug_frame   0x00001734       0xfc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
- .debug_frame   0x00001830      0x2a0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
- .debug_frame   0x00001ad0      0x2a4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
- .debug_frame   0x00001d74       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00001da0       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00001dd8       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00000120      0x20c ./src/main.o
+ .debug_frame   0x0000032c       0x60 ./src/oled_graphing.o
+ .debug_frame   0x0000038c       0x64 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_CMSISv1p30_LPC17xx\Debug\libCMSISv1p30_LPC17xx.a(system_LPC17xx.o)
+ .debug_frame   0x000003f0       0xe8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(eeprom.o)
+ .debug_frame   0x000004d8       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(joystick.o)
+ .debug_frame   0x00000528       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(led7seg.o)
+ .debug_frame   0x00000578      0x24c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(light.o)
+ .debug_frame   0x000007c4      0x244 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(oled.o)
+ .debug_frame   0x00000a08      0x1e8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(pca9532.o)
+ .debug_frame   0x00000bf0       0x50 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(rotary.o)
+ .debug_frame   0x00000c40       0x58 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_EaBaseBoard\Debug\libLib_EaBaseBoard.a(temp.o)
+ .debug_frame   0x00000c98      0x1e8 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_adc.o)
+ .debug_frame   0x00000e80      0x13c C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_clkpwr.o)
+ .debug_frame   0x00000fbc      0x428 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_gpio.o)
+ .debug_frame   0x000013e4      0x374 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_i2c.o)
+ .debug_frame   0x00001758       0xfc C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_pinsel.o)
+ .debug_frame   0x00001854      0x2a0 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_ssp.o)
+ .debug_frame   0x00001af4      0x2a4 C:\Users\Frosina\Documents\LPCXpresso_8.2.2_650\workspace\Lib_MCU\Debug\libLib_MCU.a(lpc17xx_timer.o)
+ .debug_frame   0x00001d98       0x2c c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00001dc4       0x38 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00001dfc       0x34 c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a(lib_a-memset.o)
