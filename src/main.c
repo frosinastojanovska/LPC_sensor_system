@@ -20,6 +20,7 @@
 #include "rotary.h"
 #include "led7seg.h"
 #include "light.h"
+#include "pca9532.h"
 
 
 static uint32_t msTicks = 0;
@@ -28,6 +29,7 @@ static uint16_t data_temp[10];
 static uint16_t data_light[10];
 static uint16_t data_poten[10];
 static int data_type;
+static int mode;
 static uint8_t ch7seg = '0';
 
 static void intToString(int value, uint8_t* pBuf, uint32_t len, uint32_t base)
@@ -173,26 +175,15 @@ static uint32_t getTicks(void)
     return msTicks;
 }
 
-static void change7Seg(int rotaryDir)
+static void change7Seg(int value)
 {
-
-    if (rotaryDir != ROTARY_WAIT) {
-
-        if (rotaryDir == ROTARY_RIGHT) {
-            ch7seg++;
-        }
-        else {
-            ch7seg--;
-        }
-
-        if (ch7seg > '2')
-            ch7seg = '0';
-        else if (ch7seg < '0')
-            ch7seg = '2';
-
-        led7seg_setChar(ch7seg, FALSE);
-
-    }
+    if (value == 0)
+    	ch7seg = '0';
+    else if (value == 1)
+    	ch7seg = '1';
+    else
+    	ch7seg = '2';
+    led7seg_setChar(ch7seg, FALSE);
 }
 
 
@@ -209,10 +200,13 @@ int main (void) {
     rotary_init();
     led7seg_init();
     light_init();
+    pca9532_init();
 
 	int32_t light = 0;
     int32_t t = 0;
     int32_t potenc = 0;
+
+    uint8_t btn_1 = 0;
 
     if (SysTick_Config(SystemCoreClock / 1000)) {
     	while (1);  // Capture error
@@ -249,9 +243,17 @@ int main (void) {
 			draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
     	}
 
-//		change7Seg(rotary_read());
+		btn_1 = ((GPIO_ReadValue(0) >> 4) & 0x01);
 
-		if(ch7seg == '0'){
+		if (btn_1 == 0){
+			mode++;
+			if(mode > 2)
+				mode = 0;
+		}
+
+		change7Seg(mode);
+
+		if(mode == 0){
 			// real - time buffer
 			if (data_type == 0){
 				/* Temperature */
@@ -290,7 +292,7 @@ int main (void) {
 				draw_data(99, 4100, data_poten, 10);
 			}
 		}
-		else if(ch7seg == '1'){
+		else if(mode == 1){
 			// zachuvaj vo memorija
 			oled_fillRect(75, 1, 90, 13, OLED_COLOR_WHITE);
 			oled_putString(1, 1, "Memorija:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
