@@ -5,7 +5,7 @@
  * Generated linker script file for LPC1769
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.23
- * LPCXpresso v8.2.2 [Build 650] [2016-09-09]  on May 5, 2018 1:40:17 PM
+ * LPCXpresso v8.2.2 [Build 650] [2016-09-09]  on May 5, 2018 2:02:11 PM
  */
 
 INCLUDE "rdb1768cmsis_uart_Debug_library.ld"

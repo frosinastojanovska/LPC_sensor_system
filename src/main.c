@@ -28,6 +28,9 @@
 #define LIGHT_ADD 321
 #define POTEN_ADD 641
 
+#define NOTE_PIN_HIGH() GPIO_SetValue(0, 1<<26);
+#define NOTE_PIN_LOW()  GPIO_ClearValue(0, 1<<26);
+
 
 static uint32_t msTicks = 0;
 static uint8_t buf[10];
@@ -38,6 +41,23 @@ static int data_type;
 static int mode;
 static uint8_t ch7seg = '0';
 static int draw_graph;
+
+static uint32_t notes[] = {
+        2272, // A - 440 Hz
+        2024, // B - 494 Hz
+        3816, // C - 262 Hz
+        3401, // D - 294 Hz
+        3030, // E - 330 Hz
+        2865, // F - 349 Hz
+        2551, // G - 392 Hz
+        1136, // a - 880 Hz
+        1012, // b - 988 Hz
+        1912, // c - 523 Hz
+        1703, // d - 587 Hz
+        1517, // e - 659 Hz
+        1432, // f - 698 Hz
+        1275, // g - 784 Hz
+};
 
 static void intToString(int value, uint8_t* pBuf, uint32_t len, uint32_t base)
 {
@@ -185,14 +205,49 @@ static uint32_t getTicks(void)
 static void change7Seg(int value)
 {
     if (value == 0)
-    	ch7seg = '0';
-    else if (value == 1)
     	ch7seg = '1';
-    else
+    else if (value == 1)
     	ch7seg = '2';
+    else
+    	ch7seg = '3';
     led7seg_setChar(ch7seg, FALSE);
 }
 
+static void playNote(uint32_t note, uint32_t durationMs) {
+
+    uint32_t t = 0;
+
+    if (note > 0) {
+
+        while (t < (durationMs*1000)) {
+            NOTE_PIN_HIGH();
+            Timer0_us_Wait(note / 2);
+            //delay32Us(0, note / 2);
+
+            NOTE_PIN_LOW();
+            Timer0_us_Wait(note / 2);
+            //delay32Us(0, note / 2);
+
+            t += note;
+        }
+
+    }
+    else {
+    	Timer0_Wait(durationMs);
+        //delay32Ms(0, durationMs);
+    }
+}
+
+static uint32_t getNote(uint8_t ch)
+{
+    if (ch >= 'A' && ch <= 'G')
+        return notes[ch - 'A'];
+
+    if (ch >= 'a' && ch <= 'g')
+        return notes[ch - 'a' + 7];
+
+    return 0;
+}
 
 void fill_buffer(int32_t new_data, uint16_t* data){
 	for(int i=0; i<(BUFF_LEN - 1); i++){
@@ -255,6 +310,20 @@ int main (void) {
     uint8_t btn_1 = 0;
     int result = 0;
 
+    /* ---- Speaker ------> */
+
+	GPIO_SetDir(2, 1<<0, 1);
+	GPIO_SetDir(2, 1<<1, 1);
+
+	GPIO_SetDir(0, 1<<27, 1);
+	GPIO_SetDir(0, 1<<28, 1);
+	GPIO_SetDir(2, 1<<13, 1);
+	GPIO_SetDir(0, 1<<26, 1);
+
+	GPIO_ClearValue(0, 1<<27); //LM4811-clk
+	GPIO_ClearValue(0, 1<<28); //LM4811-up/dn
+	GPIO_ClearValue(2, 1<<13); //LM4811-shutdn
+
     if (SysTick_Config(SystemCoreClock / 1000)) {
     	while (1);  // Capture error
     }
@@ -271,6 +340,7 @@ int main (void) {
 
 		if ((joy & JOYSTICK_LEFT) != 0) {
 			// temperature
+			playNote(getNote('C'), 400);
 			data_type = 0;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(3, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
@@ -278,6 +348,7 @@ int main (void) {
 
 		if ((joy & JOYSTICK_UP) != 0) {
 			// light
+			playNote(getNote('D'), 400);
 			data_type = 1;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(5, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
@@ -285,6 +356,7 @@ int main (void) {
 
 		if ((joy & JOYSTICK_RIGHT) != 0) {
 			// potenciometer
+			playNote(getNote('E'), 400);
 			data_type = 2;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
@@ -294,6 +366,7 @@ int main (void) {
 
 		if (btn_1 == 0){
 			mode++;
+			playNote(getNote('F'), 400);
 			if(mode > 2)
 				mode = 0;
 			draw_graph = 1;
