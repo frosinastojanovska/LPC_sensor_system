@@ -37,10 +37,15 @@ static uint8_t buf[10];
 static uint16_t data_temp[20];
 static uint16_t data_light[20];
 static uint16_t data_poten[20];
+static uint32_t startTime;
 static int data_type;
 static int mode;
+static int time = 10;
+static int count;
 static uint8_t ch7seg = '0';
 static int draw_graph;
+static int draw_recorded;
+static int draw_record;
 
 static uint32_t notes[] = {
         2272, // A - 440 Hz
@@ -256,6 +261,12 @@ void fill_buffer(int32_t new_data, uint16_t* data){
 	data[BUFF_LEN - 1] = new_data;
 }
 
+void clear_buffer(uint16_t* data){
+	for(int i=0; i<(BUFF_LEN - 1); i++){
+		data[i] = 0;
+	}
+}
+
 int write_to_eeprom(uint16_t *data, uint16_t offset){
 	int16_t len = 0;
 	for(int i=0; i<(BUFF_LEN - 1); i++){
@@ -344,6 +355,8 @@ int main (void) {
 			data_type = 0;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(3, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+			draw_recorded = 1;
+			draw_record = 1;
 		}
 
 		if ((joy & JOYSTICK_UP) != 0) {
@@ -352,6 +365,8 @@ int main (void) {
 			data_type = 1;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(5, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+			draw_recorded = 1;
+			draw_record = 1;
 		}
 
 		if ((joy & JOYSTICK_RIGHT) != 0) {
@@ -360,16 +375,56 @@ int main (void) {
 			data_type = 2;
 			oled_clearScreen(OLED_COLOR_WHITE);
 			draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+			draw_recorded = 1;
+			draw_record = 1;
     	}
 
 		btn_1 = ((GPIO_ReadValue(0) >> 4) & 0x01);
 
 		if (btn_1 == 0){
 			mode++;
+			clear_buffer(data_temp);
+			clear_buffer(data_poten);
+			clear_buffer(data_light);
 			playNote(getNote('F'), 400);
 			if(mode > 2)
 				mode = 0;
+			if(mode == 1){
+				time = 10;
+				oled_clearScreen(OLED_COLOR_WHITE);
+				oled_putString(1, 1, "Choose t (sec):", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				intToString(time, buf, 10, 10);
+				oled_putString(35, 15, buf, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				joy = joystick_read();
+				while(!(joy & JOYSTICK_CENTER)){
+					uint8_t rotaryDir = rotary_read();
+
+				    if (rotaryDir != ROTARY_WAIT) {
+
+				        if (rotaryDir == ROTARY_RIGHT) {
+				            time++;
+				            if (time > 60)
+				            	time = 60;
+				            intToString(time, buf, 10, 10);
+				            oled_putString(35, 15, buf, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				        }
+				        else {
+				            time--;
+				            if (time < 10)
+				            	time = 10;
+				            intToString(time, buf, 10, 10);
+				            oled_putString(35, 15, buf, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				        }
+
+				    }
+					joy = joystick_read();
+				}
+				playNote(getNote('D'), 400);
+				startTime = getTicks();
+			}
 			draw_graph = 1;
+			draw_recorded = 1;
+			draw_record = 1;
 		}
 
 		change7Seg(mode);
@@ -428,75 +483,93 @@ int main (void) {
 				fill_buffer(potenc, data_poten);
 				draw_data(99, 4100, data_poten, BUFF_LEN);
 			}
+
+	    	/* delay */
+	    	Timer0_Wait(1000);
 		}
 		else if(mode == 1){
-			// zachuvaj vo memorija
-			oled_clearScreen(OLED_COLOR_WHITE);
-			oled_putString(1, 1, "Write to EEPROM:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-			if(data_type == 0){
-				t = temp_read() / 10;
-				fill_buffer(t, data_temp);
-				result = write_to_eeprom(data_temp, (uint16_t)TEMP_ADD);
-				oled_putString(15, 30, "Temperature", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				if(result == 1)
-					return 1;
+			if(draw_record == 1){
+				oled_clearScreen(OLED_COLOR_WHITE);
+				oled_putString(1, 1, "Write to EEPROM:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				draw_record = 0;
+				if(data_type == 0)
+					oled_putString(15, 30, "Temperature", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				else if(data_type == 1)
+					oled_putString(33, 30, "Light", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+				else
+					oled_putString(10, 30, "Potentiometer", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
 			}
-			else if(data_type == 1){
-				light = light_read();
-				fill_buffer(light, data_light);
-				result = write_to_eeprom(data_light, (uint16_t)LIGHT_ADD);
-				oled_putString(33, 30, "Light", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				if(result == 1)
-					return 1;
-			}
-			else{
-				ADC_StartCmd(LPC_ADC,ADC_START_NOW);
-				//Wait conversion complete
-				while (!(ADC_ChannelGetStatus(LPC_ADC,ADC_CHANNEL_0,ADC_DATA_DONE)));
-				potenc = ADC_ChannelGetData(LPC_ADC,ADC_CHANNEL_0);
-				fill_buffer(potenc, data_poten);
-				result = write_to_eeprom(data_poten, (uint16_t)POTEN_ADD);
-				oled_putString(10, 30, "Potentiometer", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				if(result == 1)
-					return 1;
+			count = getTicks() - startTime;
+			if(count >= time*1000){
+				// zachuvaj vo memorija
+				if(data_type == 0){
+					t = temp_read() / 10;
+					fill_buffer(t, data_temp);
+					result = write_to_eeprom(data_temp, (uint16_t)TEMP_ADD);
+					if(result == 1)
+						return 1;
+				}
+				else if(data_type == 1){
+					light = light_read();
+					fill_buffer(light, data_light);
+					result = write_to_eeprom(data_light, (uint16_t)LIGHT_ADD);
+					if(result == 1)
+						return 1;
+				}
+				else{
+					ADC_StartCmd(LPC_ADC,ADC_START_NOW);
+					//Wait conversion complete
+					while (!(ADC_ChannelGetStatus(LPC_ADC,ADC_CHANNEL_0,ADC_DATA_DONE)));
+					potenc = ADC_ChannelGetData(LPC_ADC,ADC_CHANNEL_0);
+					fill_buffer(potenc, data_poten);
+					result = write_to_eeprom(data_poten, (uint16_t)POTEN_ADD);
+					if(draw_record)
+						oled_putString(10, 30, "Potentiometer", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					if(result == 1)
+						return 1;
+				}
+
+				count = 0;
+				startTime = getTicks();
 			}
 		}
 		else{
-			// prikazhi snimeno
-			if(data_type == 0){
-				oled_clearScreen(OLED_COLOR_WHITE);
-				draw_graph_outline(3, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				oled_putString(1, 1, "Recorded temp:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				result = read_from_eeprom(data_temp, (uint16_t)TEMP_ADD);
-				if(result == 1)
-					return 1;
+			if (draw_recorded == 1){
+				// prikazhi snimeno
+				if(data_type == 0){
+					oled_clearScreen(OLED_COLOR_WHITE);
+					draw_graph_outline(3, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					oled_putString(1, 1, "Recorded temp:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					result = read_from_eeprom(data_temp, (uint16_t)TEMP_ADD);
+					if(result == 1)
+						return 1;
 
-				draw_data(25, 35, data_temp, BUFF_LEN);
-			}
-			else if(data_type == 1){
-				oled_clearScreen(OLED_COLOR_WHITE);
-				draw_graph_outline(5, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				oled_putString(1, 1, "Recorded light:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				result = read_from_eeprom(data_light, (uint16_t)LIGHT_ADD);
-				if(result == 1)
-					return 1;
+					draw_data(25, 35, data_temp, BUFF_LEN);
+				}
+				else if(data_type == 1){
+					oled_clearScreen(OLED_COLOR_WHITE);
+					draw_graph_outline(5, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					oled_putString(1, 1, "Recorded light:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					result = read_from_eeprom(data_light, (uint16_t)LIGHT_ADD);
+					if(result == 1)
+						return 1;
 
-				draw_data(0, 500, data_light, BUFF_LEN);
-			}
-			else{
-				oled_clearScreen(OLED_COLOR_WHITE);
-				draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				oled_putString(1, 1, "Recorded poten:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
-				result = read_from_eeprom(data_poten, (uint16_t)POTEN_ADD);
-				if(result == 1)
-					return 1;
-				draw_data(99, 4100, data_poten, BUFF_LEN);
+					draw_data(0, 500, data_light, BUFF_LEN);
+				}
+				else{
+					oled_clearScreen(OLED_COLOR_WHITE);
+					draw_graph_outline(4, OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					oled_putString(1, 1, "Recorded poten:  ", OLED_COLOR_BLACK, OLED_COLOR_WHITE);
+					result = read_from_eeprom(data_poten, (uint16_t)POTEN_ADD);
+					if(result == 1)
+						return 1;
+					draw_data(99, 4100, data_poten, BUFF_LEN);
 
+				}
 			}
+			draw_recorded = 0;
 
 		}
-    	/* delay */
-    	Timer0_Wait(1000);
     }
 
 }
