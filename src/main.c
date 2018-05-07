@@ -383,9 +383,9 @@ int main (void) {
 
 		if (btn_1 == 0){
 			mode++;
-			clear_buffer(data_temp);
-			clear_buffer(data_poten);
-			clear_buffer(data_light);
+//			clear_buffer(data_temp);
+//			clear_buffer(data_poten);
+//			clear_buffer(data_light);
 			playNote(getNote('F'), 400);
 			if(mode > 2)
 				mode = 0;
