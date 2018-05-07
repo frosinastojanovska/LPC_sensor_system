@@ -63,6 +63,7 @@ void draw_data(uint16_t min, uint16_t max, uint16_t* data, uint16_t data_size){
 			int offset_y2 = 40 - norm_data2;
 			oled_line(10 + offset_x*(i-1), 17 + offset_y2, 10 + offset_x*i, 17 + offset_y, color_data);
 		}
-		oled_putPixel(10 + offset_x*i, 17 + offset_y, color_data);
+		if(offset_y < 40)
+			oled_circle(10 + offset_x*i, 17 + offset_y, 1, color_data);
 	}
 }
